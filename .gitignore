@@ -19,6 +19,7 @@ gcp-key*.json
 .env
 .env.*
 !.env.example
+*.tfvars.example
 
 # Python
 __pycache__/
