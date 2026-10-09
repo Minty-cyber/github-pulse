@@ -1,4 +1,4 @@
-# gh-pulse
+# github-pulse
 
 > **A cloud data warehouse analytics project** exploring 5 years (2020–2024)
 > of public GitHub activity — ~15 billion events, modeled dimensionally in
@@ -12,7 +12,7 @@
 
 ## What this is
 
-gh-pulse answers one question: **what did the open-source world actually
+github-pulse answers one question: **what did the open-source world actually
 look like each year from 2020 to 2024?**
 
 The deliverable is a **Year-in-Review dashboard** — pick a year, see the
