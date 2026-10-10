@@ -1,5 +1,7 @@
 # gh-pulse
 
+![GitHub Pulse architecture](docs/images/architecture.png)
+
 > **A cloud data warehouse analytics project** exploring 5 years (2020–2024)
 > of public GitHub activity — ~15 billion events, modeled dimensionally in
 > BigQuery, visualized as a Year-in-Review dashboard in Metabase.
