@@ -92,7 +92,6 @@ behind the code:
 - **[ADR 0001](docs/decisions/0001-why-bigquery.md)** — Why BigQuery and not Snowflake, Databricks, or DuckDB
 - **[ADR 0002](docs/decisions/0002-pre-aggregate-at-staging.md)** — Why staging aggregates on the way in, not event-level
 - **[ADR 0003](docs/decisions/0003-use-metabase-selfhosted.md)** — Why Metabase (and self-hosted) over Looker/Superset/Tableau
-- **[ADR 0004](docs/decisions/0004-console-first-infra.md)** — Why infrastructure was provisioned via console, not Terraform
 - **[ADR 0005](docs/decisions/0005-skip-payload-extraction.md)** — Why PR-detail queries were cut mid-backfill
 - **[ADR 0006](docs/decisions/0006-two-fact-tables-not-one.md)** — Why two fact tables sharing dimensions, not one atomic fact
 
