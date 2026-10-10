@@ -17,14 +17,10 @@
 github-pulse answers one question: **what did the open-source world actually
 look like each year from 2020 to 2024?**
 
-The deliverable is a **Year-in-Review dashboard** — pick a year, see the
+The deliverable is a **Year-in-Review dashboard** ; pick a year, see the
 breakout repos, top contributors, biggest star moments, bot-vs-human activity
-patterns, and month-by-month rhythm. One year's story at a time.
+patterns, and month-by-month insights. 
 
-Underneath, it's an analytics engineering project built on real cloud
-infrastructure with real cost discipline. The goal was never "build the
-cleverest thing." It was: **learn to design and operate a cloud data
-warehouse the way a working analytics engineer would.**
 
 ## By the numbers
 
