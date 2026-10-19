@@ -4,6 +4,10 @@ dbt/dbt_packages/
 dbt/logs/
 dbt/profiles.yml
 dbt/.user.yml
+profiles.yml
+*.log
+manifest.json
+semantic_manifest.json
 
 # Terraform
 infra/.terraform/
