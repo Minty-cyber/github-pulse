@@ -1,0 +1,41 @@
+name: 'github_pulse'
+version: '1.0.0'
+config-version: 2
+
+profile: 'github_pulse'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+
+clean-targets: ["target", "dbt_packages"]
+
+
+
+models:
+  github_pulse:
+    staging: 
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: table
+      +schema: intermdeiate
+    marts:
+      core:
+        +materialized: table
+        +schema: core
+      reporting:
+        +materialized: table
+        +schema: reporting
+
+
+seeds:
+  github_pulse:
+    +schema: seeds
+
+vars:
+  dev_start_date: '2024-12-01'
