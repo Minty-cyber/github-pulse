@@ -1,5 +1,6 @@
 # dbt
 dbt/target/
+src/target/
 dbt/dbt_packages/
 dbt/logs/
 dbt/profiles.yml
