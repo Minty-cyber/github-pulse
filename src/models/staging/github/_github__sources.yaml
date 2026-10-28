@@ -1,0 +1,66 @@
+version: 2
+
+sources:
+  - name: github
+    description: >
+      Daily aggregates extracted from the public GH Archive dataset
+      (githubarchive.day.*), covering 2020-01-01 to 2024-12-31.
+      Extraction queries live in the extract/ folder.
+    database: gh-pulse-510620
+    schema: raw
+
+
+    tables:
+      - name: daily_repo_activity
+        description: One row per day, repo, event type and bot flag. Partitioned by event_date, clustered by repo_id and event_type
+        columns:
+          - name: event_date
+            description: UTC date of the events
+          - name: repo_id
+            description: GitHub's repository ID
+          - name: repo_name
+            description: Latest owner/name for the repo on that day
+          - name: event_type
+            description: GitHub event type, e.g PushEvent
+          - name: is_bot
+            description: Flag is True when the actor's login ends in [bot], computed at extraction.
+          - name: event_count
+            description: Number of events
+      - name: daily_event_counts
+        description: One row per day, event type and bot flag. Aggregate from daily_repo_activity. Partitioned by event_date
+        columns:
+          - name: event_date
+            description: UTC date of the events
+          - name: event_type
+            description: GitHu event Type 
+          - name: is_bot
+            description: Flag is True when the actor's login ends in [bot], computed at extraction.
+          - name: event_count
+            description: Number of events
+      - name: daily_actor_activity
+        identifier: stg_github__daily_actor_activity
+        description: One row per day, actor login and event type.
+        columns:
+          - name: event_type
+            description: GitHub event type 
+          - name: event_count
+            description: Number of events
+          - name: event_date
+            description: UTC Date of the events 
+          - name: actor_login
+            description: Github login at the time of the event
+      - name: daily_stars
+        identifier: stg_github__daily_stars
+        description: One row per star event (WatchEvent).
+        columns:
+          - name: event_date
+            description: UTC date of the star
+          - name: repo_id
+            description: GitHub repository ID 
+          - name: repo_name
+            description: Github repository name
+          - name: starring_actor
+            description: Login of the user who starred the repo
+          - name: starred_at
+            description: Exact UTC timestamp of the star.
+
