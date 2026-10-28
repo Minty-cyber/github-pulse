@@ -48,7 +48,7 @@ sources:
           - name: event_date
             description: UTC Date of the events 
           - name: actor_login
-            description: Github login at the time of the event
+            description: Github username at the time of the event
       - name: daily_stars
         identifier: stg_github__daily_stars
         description: One row per star event (WatchEvent).
