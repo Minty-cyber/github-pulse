@@ -6,6 +6,7 @@ dbt/profiles.yml
 dbt/.user.yml
 profiles.yml
 *.log
+*_log.sql
 manifest.json
 semantic_manifest.json
 
