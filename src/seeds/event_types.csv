@@ -1,0 +1,18 @@
+event_type,event_label,event_category,is_contribution,description
+PushEvent,Push,code,true,Commits pushed to a branch
+PullRequestEvent,Pull request,code,true,Pull request opened or closed or reopened
+ReleaseEvent,Release,code,true,Release published
+CreateEvent,Create,repo_management,false,Repository or branch or tag created
+DeleteEvent,Delete,repo_management,false,Branch or tag deleted
+PublicEvent,Made public,repo_management,false,Private repository made public
+MemberEvent,Collaborator added,repo_management,false,Collaborator added to a repository
+IssuesEvent,Issue,collaboration,true,Issue opened or closed or edited
+IssueCommentEvent,Issue comment,collaboration,true,Comment on an issue or pull request
+PullRequestReviewEvent,PR review,collaboration,true,Pull request review submitted
+PullRequestReviewCommentEvent,PR review comment,collaboration,true,Comment on a pull request diff
+PullRequestReviewThreadEvent,PR review thread,collaboration,true,Pull request review thread resolved or unresolved
+CommitCommentEvent,Commit comment,collaboration,true,Comment on a commit
+GollumEvent,Wiki edit,collaboration,true,Wiki page created or updated
+WatchEvent,Star,community,false,Repository starred
+ForkEvent,Fork,community,false,Repository forked
+SponsorshipEvent,Sponsorship,community,false,Sponsorship created or changed
