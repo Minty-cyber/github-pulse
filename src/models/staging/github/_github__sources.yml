@@ -38,7 +38,6 @@ sources:
           - name: event_count
             description: Number of events
       - name: daily_actor_activity
-        identifier: stg_github__daily_actor_activity
         description: One row per day, actor login and event type.
         columns:
           - name: event_type

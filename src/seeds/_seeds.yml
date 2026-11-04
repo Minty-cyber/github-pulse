@@ -1,0 +1,22 @@
+version: 2
+
+seeds: 
+  - name: event_types
+    description: Reference list of GitHub event types with readable labels and categories
+    config:   
+      column_types: 
+        event_type: string 
+        event_label: string 
+        event_category: string
+        is_contribution: bool
+        description: string
+    columns:
+      - name: event_types
+        description: GitHub event type name, as it appears in the source data
+        data_tests: [unique, not_null]
+      - name: event_category
+        data_tests:
+         - accepted_values:
+            arguments:
+              values: [code, collaboration, repo_management, community]
+
