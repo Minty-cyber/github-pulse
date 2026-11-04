@@ -18,6 +18,10 @@ cleaned as (
         and repo_name is not null
         and starring_actor is not null
         and starred_at is not null
+    qualify row_number() over (
+        partition by repo_id, starring_actor, starred_at
+        order by event_date
+    ) = 1
 )
 
 select * from cleaned

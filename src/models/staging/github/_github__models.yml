@@ -1,0 +1,133 @@
+version: 2
+
+models:
+  - name: stg_github__repo_activity
+    description: Cleaned daily repository activity. One row per day, repo, event type and bot flag.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [event_date, repo_id, event_type, is_bot]
+    columns:
+      - name: event_date
+        description: UTC date of the events.
+        data_tests: [not_null]
+      - name: repo_id
+        description: GitHub's stable repository ID. Use this, not the name, to identify repos.
+        data_tests: [not_null]
+      - name: repo_full_name
+        description: Latest owner/name for the repo on that day. Not unique; deleted and recreated repos can share a name.
+      - name: repo_owner
+        description: Owner part of repo_full_name.
+      - name: repo_name
+        description: Repository part of repo_full_name.
+      - name: event_type
+        description: GitHub event type.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: &event_types
+                  - CommitCommentEvent
+                  - CreateEvent
+                  - DeleteEvent
+                  - ForkEvent
+                  - GollumEvent
+                  - IssueCommentEvent
+                  - IssuesEvent
+                  - MemberEvent
+                  - PublicEvent
+                  - PullRequestEvent
+                  - PullRequestReviewEvent
+                  - PullRequestReviewCommentEvent
+                  - PullRequestReviewThreadEvent
+                  - PushEvent
+                  - ReleaseEvent
+                  - SponsorshipEvent
+                  - WatchEvent
+              config:
+                severity: warn
+      - name: is_bot
+        description: True if the actor's login ends in [bot].
+        data_tests: [not_null]
+      - name: event_count
+        description: Number of events.
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 1
+
+  - name: stg_github__event_counts
+    description: Cleaned daily event totals. One row per day, event type and bot flag.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [event_date, event_type, is_bot]
+    columns:
+      - name: event_date
+        data_tests: [not_null]
+      - name: event_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: *event_types
+              config:
+                severity: warn
+      - name: is_bot
+        data_tests: [not_null]
+      - name: event_count
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 1
+
+  - name: stg_github__actor_activity
+    description: Cleaned daily actor activity. One row per day, actor login and event type.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [event_date, actor_login, event_type]
+    columns:
+      - name: event_date
+        data_tests: [not_null]
+      - name: actor_login
+        description: GitHub login. No stable actor ID exists, so renamed accounts appear as separate actors.
+        data_tests: [not_null]
+      - name: is_bot
+        data_tests: [not_null]
+      - name: event_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: *event_types
+              config:
+                severity: warn
+      - name: event_count
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 1
+
+  - name: stg_github__stars
+    description: Cleaned star events. One row per star.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [repo_id, actor_login, starred_at]
+    columns:
+      - name: event_date
+        data_tests: [not_null]
+      - name: repo_id
+        data_tests: [not_null]
+      - name: actor_login
+        description: Login of the user who starred the repo (renamed from starring_actor).
+        data_tests: [not_null]
+      - name: starred_at
+        description: Exact UTC timestamp of the star.
+        data_tests: [not_null]
+      - name: is_bot
+        data_tests: [not_null]
