@@ -48,19 +48,6 @@ patterns, and month-by-month insights.
 See [`docs/architecture.md`](docs/architecture.md) for the full component
 breakdown.
 
-## Status (as of October 2026)
-
-Milestones:
-
-- ✅ **M0** — Project scaffolded on GitHub
-- ✅ **M1** — Infrastructure provisioned (console-first; Terraform in `infra/` as reference — see [ADR 0004](docs/decisions/0004-console-first-infra.md))
-- ✅ **M2** — First staging model proven end-to-end on 1 day of data
-- ✅ **M3** — Full 5-year backfill complete (4 staging tables, ~3.84B rows total)
-- 🚧 **M4** — Mart layer design + build (in progress)
-- ⏳ **M5** — Metabase dashboard build
-- ⏳ **M6** — CI/CD + README polish
-- ⏳ **M7** — (Optional) Deploy Metabase to Cloud Run
-
 ## Repository structure
 
 ```
