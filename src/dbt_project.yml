@@ -23,7 +23,7 @@ models:
       +schema: staging
     intermediate:
       +materialized: table
-      +schema: intermdeiate
+      +schema: intermediate
     marts:
       core:
         +materialized: table
@@ -39,3 +39,7 @@ seeds:
 
 vars:
   dev_start_date: '2024-12-01'
+  automation_actor_daily_events: 1000
+  automation_repo_monthly_events: 10000
+  automation_repo_top_type_share: 0.95
+  automation_repo_bot_share: 0.9

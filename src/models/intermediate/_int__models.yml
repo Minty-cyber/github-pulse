@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: int_repo_latest_name
+    description: One row per repository with its latest name and first and last activity dates.
+    columns:
+      - name: repo_id
+        data_tests: [unique, not_null]
+      - name: repo_full_name
+        data_tests: [not_null]
+
+  - name: int_actor_first_last_seen
+    description: One row per actor login (lowercased), with declared-bot and suspected-automation flags and activity summary.
+    columns:
+      - name: actor_login
+        data_tests: [unique, not_null]
+      - name: is_bot
+        description: True if the login ends in [bot] or is listed in the known_bots seed.
+        data_tests: [not_null]
+      - name: is_suspected_automation
+        description: True if the actor's busiest day reached the automation_actor_daily_events threshold.
+        data_tests: [not_null]
+
+  - name: int_repo_activity_profile
+    description: One row per repository with an automation flag based on monthly activity patterns.
+    columns:
+      - name: repo_id
+        data_tests: [unique, not_null]
+      - name: is_automated
+        description: True if, in any month, the repo had at least automation_repo_monthly_events events and either one event type or bot activity dominated.
+        data_tests: [not_null]
