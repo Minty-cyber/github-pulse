@@ -73,6 +73,7 @@ gh-pulse/
 ├── docs/
 │   ├── architecture.md       # system overview + diagrams
 │   ├── data_model.md         # dimensional model walkthrough
+│   ├── raw-data-eda.md       # data quality checks to run on the raw tables
 │   ├── runbook.md            # how to reproduce / run locally
 │   ├── cost_report.md        # honest spend summary
 │   └── decisions/            # ADRs (numbered, one per real decision)
@@ -97,6 +98,13 @@ Each ADR explains the context, the alternatives considered, the decision, and
 the consequences. The pattern is deliberate — real engineering is a sequence
 of tradeoffs, not a straight line.
 
+## Data quality
+
+Before trusting any model, the raw tables get checked for duplicates, grain
+violations, repo renames, bots that slip past the `[bot]` filter, and gaps in
+the daily series. The queries, what each one finds and where each fix belongs
+are in [`docs/raw-data-eda.md`](docs/raw-data-eda.md).
+
 ## Data model (preview)
 
 A classic Kimball-style dimensional model with two fact tables sharing
@@ -120,10 +128,7 @@ to tables — in [`docs/data_model.md`](docs/data_model.md).
 Being clear about scope matters more than being flashy:
 
 - **Not real-time** — data covers 2020–2024, batch-loaded once
-- **Not partitioned/clustered** at the warehouse layer (see [ADR 0005](docs/decisions/0005-no-partitioning.md) for why)
 - **Not Spark/Hadoop** — this is "medium data" (hundreds of GB), BigQuery handles it serverlessly
-- **Not production** — a learning + portfolio project, not a shipping product
-- **Not a monetized dataset** — all data from the free, public [GH Archive](https://www.gharchive.org)
 
 ## Running locally
 
