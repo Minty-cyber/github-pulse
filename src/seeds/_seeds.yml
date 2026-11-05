@@ -34,4 +34,19 @@ seeds:
     columns:
       - name: actor_login
         data_tests: [unique, not_null]
-
+  - name: data_quality_dates
+    description: Days where the source data is missing or incomplete, grouped into incidents. Feeds dim_date.is_incomplete_data.
+    config:
+      column_types:
+        date: date
+        issue_type: string
+        incident: string
+        note: string
+    columns:
+      - name: date
+        data_tests: [unique, not_null]
+      - name: issue_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [missing, partial]
