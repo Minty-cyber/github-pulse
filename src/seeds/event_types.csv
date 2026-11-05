@@ -1,18 +1,16 @@
-event_type,event_label,event_category,is_contribution,description
-PushEvent,Push,code,true,Commits pushed to a branch
-PullRequestEvent,Pull request,code,true,Pull request opened or closed or reopened
-ReleaseEvent,Release,code,true,Release published
-CreateEvent,Create,repo_management,false,Repository or branch or tag created
-DeleteEvent,Delete,repo_management,false,Branch or tag deleted
-PublicEvent,Made public,repo_management,false,Private repository made public
-MemberEvent,Collaborator added,repo_management,false,Collaborator added to a repository
-IssuesEvent,Issue,collaboration,true,Issue opened or closed or edited
-IssueCommentEvent,Issue comment,collaboration,true,Comment on an issue or pull request
-PullRequestReviewEvent,PR review,collaboration,true,Pull request review submitted. Its first record started appearing from 2020-08-18
-PullRequestReviewCommentEvent,PR review comment,collaboration,true,Comment on a pull request diff
-PullRequestReviewThreadEvent,PR review thread,collaboration,true,Pull request review thread resolved or unresolved
-CommitCommentEvent,Commit comment,collaboration,true,Comment on a commit
-GollumEvent,Wiki edit,collaboration,true,Wiki page created or updated
-WatchEvent,Star,community,false,Repository starred
-ForkEvent,Fork,community,false,Repository forked
-SponsorshipEvent,Sponsorship,community,false,Sponsorship created or changed
+event_type,event_label,event_category,is_contribution,recorded_from,description
+PushEvent,Push,code,true,2020-01-01,Commits pushed to a branch
+PullRequestEvent,Pull request,code,true,2020-01-01,Pull request opened or closed or reopened
+ReleaseEvent,Release,code,true,2020-01-01,Release published
+CreateEvent,Create,repo_management,false,2020-01-01,Repository or branch or tag created
+DeleteEvent,Delete,repo_management,false,2020-01-01,Branch or tag deleted
+PublicEvent,Made public,repo_management,false,2020-01-01,Private repository made public
+MemberEvent,Collaborator added,repo_management,false,2020-01-01,Collaborator added to a repository
+IssuesEvent,Issue,collaboration,true,2020-01-01,Issue opened or closed or edited
+IssueCommentEvent,Issue comment,collaboration,true,2020-01-01,Comment on an issue or pull request
+PullRequestReviewEvent,PR review,collaboration,true,2020-08-18,Pull request review submitted. Only recorded in the data from 2020-08-18
+PullRequestReviewCommentEvent,PR review comment,collaboration,true,2020-01-01,Comment on a pull request diff
+CommitCommentEvent,Commit comment,collaboration,true,2020-01-01,Comment on a commit
+GollumEvent,Wiki edit,collaboration,true,2020-01-01,Wiki page created or updated
+WatchEvent,Star,community,false,2020-01-01,Repository starred
+ForkEvent,Fork,community,false,2020-01-01,Repository forked

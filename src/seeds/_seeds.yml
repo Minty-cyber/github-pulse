@@ -9,9 +9,10 @@ seeds:
         event_label: string 
         event_category: string
         is_contribution: bool
+        recorded_from: date
         description: string
     columns:
-      - name: event_types
+      - name: event_type
         description: GitHub event type name, as it appears in the source data
         data_tests: [unique, not_null]
       - name: event_category
@@ -19,4 +20,18 @@ seeds:
          - accepted_values:
             arguments:
               values: [code, collaboration, repo_management, community]
+      - name: is_contribution
+        data_tests: [not_null]
+      - name: recorded_from
+        description: First date this event type appears in the data
+  - name: known_bots
+    description: Bot accounts whose login does not end in [bot]. Logins are lowercase
+    config:  
+      column_types:
+        actor_login: string
+        reason: string
+
+    columns:
+      - name: actor_login
+        data_tests: [unique, not_null]
 
