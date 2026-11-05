@@ -47,7 +47,7 @@ sources:
           - name: event_date
             description: UTC Date of the events 
           - name: actor_login
-            description: Github username at the time of the event
+            description: Github username at the time of the event. Logins are lowercased; rows that collide after lowercasing are summed
       - name: daily_stars
         description: One row per star event (WatchEvent) partitioned by event_date.
         columns:

@@ -8,9 +8,9 @@ cleaned as (
     select
         event_date,
         repo_id,
-        repo_name as repo_full_name,
-        starring_actor as actor_login,
-        {{ is_bot('starring_actor') }} as is_bot,
+        trim(repo_name)                                as repo_full_name,
+        lower(starring_actor    )                      as actor_login,
+        {{ is_bot('starring_actor') }}                 as is_bot,
         starred_at
     from source
     where
