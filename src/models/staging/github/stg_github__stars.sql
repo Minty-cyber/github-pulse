@@ -15,9 +15,18 @@ cleaned as (
     from source
     where
         event_date is not null
-        and repo_name is not null
+        and repo_id is not null
         and starring_actor is not null
         and starred_at is not null
+),
+
+deduplicated as (
+    select * 
+    from cleaned
+    qualify row_number() over(
+        partition by repo_id, actor_login, starred_at
+        order by repo_full_name
+    ) = 1
 )
 
-select * from cleaned
+select * from deduplicated
